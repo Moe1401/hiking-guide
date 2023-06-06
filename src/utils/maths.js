@@ -1,3 +1,4 @@
+// Haversine formula adapted from: https://www.movable-type.co.uk/scripts/latlong.html
 export const haversine = (lat1, lon1, lat2, lon2) => {
   const R_Earth = 6371e3; // Earth radius in meters
   const meters_per_mile = 1609.34;
