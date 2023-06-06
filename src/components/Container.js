@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import '../App.css';
 import NavTabs from './NavTabs';
 import Home from './pages/Home';
+import Form from '../components/pages/Form/index';
 import Profile from './pages/Profile';
 import Trails from './pages/Trails';
 
@@ -19,6 +21,10 @@ export default function Container() {
     if (currentPage === 'Trails') {
       return <Trails />;
     }
+    if (currentPage === 'Login') {
+      return <Form />;
+    }
+    
   };
 
   const handlePageChange = (page) => setCurrentPage(page);
@@ -29,6 +35,26 @@ export default function Container() {
       <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
       {/* Here we are calling the renderPage method which will return a component  */}
       {renderPage()}
+
+      <form class="hikeSearch">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4"></div>
+
+              <div class="col-md-4 text-center">
+
+                <div class="invalid-feedback">
+                  Please enter a......</div>
+
+                <input type="text" class="form-control mb-3 mt-10" name="locations" id="locations" placeholder="Something about hiking "
+                  autofocus />
+                <button type="button" class="btn btn-primary" id="searchLocation2" role="button"
+                  aria-pressed="true">Search</button>
+              </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
