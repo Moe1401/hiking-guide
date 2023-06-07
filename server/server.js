@@ -1,4 +1,4 @@
-import 'boostrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
