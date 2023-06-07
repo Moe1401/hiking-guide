@@ -1,6 +1,7 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const trailSchema = new Schema({
+const trailSchema = new mongoose.Schema({
+  
   trail_name: String,
   trail_uses: [String],
   paved: Number,
@@ -16,8 +17,11 @@ const trailSchema = new Schema({
   winter: [String],
   latitude: Number,
   longitude: Number,
+  map_latitude: Number,
+  map_longitude: Number,
+  map_zoom: Number,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
 
-module.exports = model('Trail', trailSchema);
+module.exports = mongoose.model('Trail', trailSchema);
