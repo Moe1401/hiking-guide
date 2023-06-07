@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema({
   },
   hikes: [{ type: Schema.Types.ObjectId, ref: 'Hike' }],
   hiking_goal: Number,
-  avg_miles_per_day: Number,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
@@ -27,10 +26,15 @@ userSchema.virtual('total_distance').get(function(){
 });
 
 userSchema.virtual('account_age_in_days').get(function(){
-  return Math.ceil((Date.now() - this.created_at )/ (1000 * 60 * 60 * 24));
+  return Math.ceil(( Date.now() - this.created_at )/ (1000 * 60 * 60 * 24));
 });
 
-// userSchema.virtual('average_distance_per_day').get()
+// TODO: DRY this up
+userSchema.virtual('average_distance_per_day').get(function(){
+  const total_distance = this.hikes.map(function(hike){hike.distance}).reduce(function(total,elem){return total+elem});
+  const account_age_in_days = Math.ceil(( Date.now() - this.created_at )/ (1000 * 60 * 60 * 24));
+  return total_distance / account_age_in_days;
+})
 
 const User = mongoose.model('User', userSchema);
 
