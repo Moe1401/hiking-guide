@@ -7,7 +7,7 @@ const hikeSchema = new mongoose.Schema({
   goal_distance: Number,
   comments: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Comments',
     },
   ],

@@ -1,5 +1,7 @@
 const connection = require('../config/connection');
 const User = require('../models/User');
+const { ObjectId } = require('mongoose').Types;
+
 
 
 async function seedUsers() {
@@ -8,6 +10,7 @@ async function seedUsers() {
     
     const userData = [
       {
+        _id: new ObjectId('647e11311ba1d11e7e07d226'),
         username: 'johnDoe',
         password: 'password123',
         hikes: [],
@@ -16,6 +19,7 @@ async function seedUsers() {
         updated_at: '2023-06-07',
       },
       {
+        _id: new ObjectId('647e11311ba1d11e7e07d227'), // User ID reference
         username: 'janeSmith',
         password: 'secret456',
         hikes: [],
@@ -30,9 +34,10 @@ async function seedUsers() {
     console.log('Users seeded successfully!');
   } catch (error) {
     console.error('Error seeding users:', error);
-  } finally {
-    connection.close(); // Close the database connection
-  }
+  } 
 }
 
 seedUsers();
+
+
+module.exports = seedUsers;
