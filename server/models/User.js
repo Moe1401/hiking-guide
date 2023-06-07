@@ -1,10 +1,16 @@
-// User Model
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  email: String,
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   hikes: [{ type: Schema.Types.ObjectId, ref: 'Hike' }],
   hiking_goal: Number,
   avg_miles_per_day: Number,
@@ -26,5 +32,6 @@ userSchema.virtual('account_age_in_days').get(function(){
 
 // userSchema.virtual('average_distance_per_day').get()
 
-module.exports = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
+module.exports = User;
