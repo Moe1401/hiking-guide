@@ -1,17 +1,22 @@
-// User Model
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  email: String,
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   total_hikes: Number,
   total_distance: Number,
   hiking_goal: Number,
   avg_miles_per_day: Number,
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now }
 });
 
-module.exports = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
+module.exports = User;
