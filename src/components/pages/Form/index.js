@@ -2,51 +2,150 @@ import React, { useState } from 'react';
 import './style.css';
 
 function Form() {
-  // Here we set two state variables for firstName and lastName using `useState`
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [signupName, setSignupName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
 
-  const handleInputChange = (e) => {
-    // Getting the value and name of the input which triggered the change
-    const { name, value } = e.target;
-
-    // Ternary statement that will call either setFirstName or setLastName based on what field the user is typing in
-    return name === 'firstName' ? setFirstName(value) : setLastName(value);
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    // Handle login logic here
+    console.log("Login form submitted");
+    console.log("Email:", loginEmail);
+    console.log("Password:", loginPassword);
+    setLoginEmail('');
+    setLoginPassword('');
   };
 
-  const handleFormSubmit = (e) => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
+  const handleSignupSubmit = (e) => {
     e.preventDefault();
-    setFirstName('');
-    setLastName('');
+    // Handle signup logic here
+    console.log("Signup form submitted");
+    console.log("Name:", signupName);
+    console.log("Email:", signupEmail);
+    console.log("Password:", signupPassword);
+    setSignupName('');
+    setSignupEmail('');
+    setSignupPassword('');
   };
 
   return (
     <div>
-      <p>
-        Hello {firstName} {lastName}
-      </p>
-      <form className="form">
+      <h1>Login</h1>
+      <form className="form" onSubmit={handleLoginSubmit}>
         <input
-          value={firstName}
-          name="firstName"
-          onChange={handleInputChange}
-          type="text"
-          placeholder="First Name"
+          value={loginEmail}
+          name="loginEmail"
+          onChange={(e) => setLoginEmail(e.target.value)}
+          type="email"
+          placeholder="Email"
+          required
         />
         <input
-          value={lastName}
-          name="lastName"
-          onChange={handleInputChange}
-          type="text"
-          placeholder="Last Name"
+          value={loginPassword}
+          name="loginPassword"
+          onChange={(e) => setLoginPassword(e.target.value)}
+          type="password"
+          placeholder="Password"
+          required
         />
-        <button type="button" onClick={handleFormSubmit}>
-          Login
-        </button>
+        <button type="submit">Login</button>
+      </form>
+
+      <h1>Signup</h1>
+      <form className="form" onSubmit={handleSignupSubmit}>
+        <input
+          value={signupName}
+          name="signupName"
+          onChange={(e) => setSignupName(e.target.value)}
+          type="text"
+          placeholder="Name"
+          required
+        />
+        <input
+          value={signupEmail}
+          name="signupEmail"
+          onChange={(e) => setSignupEmail(e.target.value)}
+          type="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          value={signupPassword}
+          name="signupPassword"
+          onChange={(e) => setSignupPassword(e.target.value)}
+          type="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Signup</button>
       </form>
     </div>
   );
 }
 
 export default Form;
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import './style.css';
+
+// function Form() {
+//   // Here we set two state variables for firstName and lastName using `useState`
+//   const [firstName, setFirstName] = useState('');
+//   const [lastName, setLastName] = useState('');
+
+//   const handleInputChange = (e) => {
+//     // Getting the value and name of the input which triggered the change
+//     const { name, value } = e.target;
+
+//     // Ternary statement that will call either setFirstName or setLastName based on what field the user is typing in
+//     return name === 'firstName' ? setFirstName(value) : setLastName(value);
+//   };
+
+//   const handleFormSubmit = (e) => {
+//     // Preventing the default behavior of the form submit (which is to refresh the page)
+//     e.preventDefault();
+//     setFirstName('');
+//     setLastName('');
+//   };
+
+//   return (
+//     <div>
+//       <p>
+//         Hello {firstName} {lastName}
+//       </p>
+//       <form className="form">
+//         <input
+//           value={firstName}
+//           name="firstName"
+//           onChange={handleInputChange}
+//           type="text"
+//           placeholder="First Name"
+//         />
+//         <input
+//           value={lastName}
+//           name="lastName"
+//           onChange={handleInputChange}
+//           type="text"
+//           placeholder="Last Name"
+//         />
+//         <button type="button" onClick={handleFormSubmit}>
+//           Login
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Form;
