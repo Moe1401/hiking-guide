@@ -1,7 +1,6 @@
-// User Model
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   email: String,
@@ -13,5 +12,4 @@ const userSchema = new Schema({
   updated_at: { type: Date, default: Date.now }
 });
 
-module.exports = model('User', userSchema);
-
+module.exports = mongoose.model('User', userSchema);

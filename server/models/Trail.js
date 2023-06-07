@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const trailSchema = new Schema({
+const trailSchema = new mongoose.Schema({
   trail_name: String,
   trail_uses: [String],
   paved: Number,
@@ -20,4 +20,4 @@ const trailSchema = new Schema({
   updated_at: { type: Date, default: Date.now }
 });
 
-module.exports = model('Trail', trailSchema);
+module.exports = mongoose.model('Trail', trailSchema);

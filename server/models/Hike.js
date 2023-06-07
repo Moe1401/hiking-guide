@@ -1,8 +1,8 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const hikeSchema = new Schema({
-  user_id: { type: Schema.Types.ObjectId, ref: 'User' },
-  trail_id: { type: Schema.Types.ObjectId, ref: 'Trail' },
+const hikeSchema = new mongoose.Schema({
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  trail_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Trail' },
   distance: Number,
   goal_distance: Number,
   comments: String,
@@ -11,4 +11,4 @@ const hikeSchema = new Schema({
   updated_at: { type: Date, default: Date.now }
 });
 
-module.exports = model('Hike', hikeSchema);
+module.exports = mongoose.model('Hike', hikeSchema);
