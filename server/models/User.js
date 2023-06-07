@@ -22,7 +22,9 @@ userSchema.virtual('total_distance').get(function(){
 
 userSchema.virtual('account_age_in_days').get(function(){
   return Math.ceil((Date.now() - this.created_at )/ (1000 * 60 * 60 * 24));
-})
+});
+
+// userSchema.virtual('average_distance_per_day').get()
 
 module.exports = model('User', userSchema);
 
