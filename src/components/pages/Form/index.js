@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 
 function Form() {
-  const [loginEmail, setLoginEmail] = useState('');
+  const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
@@ -12,9 +12,9 @@ function Form() {
     e.preventDefault();
     // Handle login logic here
     console.log("Login form submitted");
-    console.log("Email:", loginEmail);
+    console.log("Username:", loginUsername);
     console.log("Password:", loginPassword);
-    setLoginEmail('');
+    setLoginUsername('');
     setLoginPassword('');
   };
 
@@ -35,11 +35,11 @@ function Form() {
       <h1>Login</h1>
       <form className="form" onSubmit={handleLoginSubmit}>
         <input
-          value={loginEmail}
-          name="loginEmail"
-          onChange={(e) => setLoginEmail(e.target.value)}
-          type="email"
-          placeholder="Email"
+          value={loginUsername}
+          name="loginUsername"
+          onChange={(e) => setLoginUsername(e.target.value)}
+          type="text" // Change input type to "text"
+          placeholder="Username" // Change placeholder to "Username"
           required
         />
         <input
@@ -93,9 +93,7 @@ export default Form;
 
 
 
-
-
-
+//Gary boilerplate code
 
 // import React, { useState } from 'react';
 // import './style.css';
