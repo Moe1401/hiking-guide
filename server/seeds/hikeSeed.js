@@ -36,6 +36,5 @@ async function seedHikes() {
   }
 }
 
-seedHikes();
 
 module.exports = seedHikes;

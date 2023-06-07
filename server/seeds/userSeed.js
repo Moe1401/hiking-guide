@@ -37,7 +37,5 @@ async function seedUsers() {
   } 
 }
 
-seedUsers();
-
 
 module.exports = seedUsers;

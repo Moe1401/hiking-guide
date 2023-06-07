@@ -32,6 +32,5 @@ async function seedComments() {
   } 
 }
 
-seedComments();
 
 module.exports = seedComments;
