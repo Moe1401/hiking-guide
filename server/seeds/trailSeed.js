@@ -1,5 +1,6 @@
 const connection = require('../config/connection');
 const Trail = require('../models/Trail');
+const { ObjectId } = require('mongoose').Types;
 
 async function seedTrails() {
   try {
@@ -7,6 +8,7 @@ async function seedTrails() {
 
     const trailData = [
       {
+        _id: new ObjectId('647e11311ba1d11e7e07d228'),
         trail: 'Blazing Star State Trail',
         trailUses: ['Hiking', 'Biking', 'In-line skating', 'Wheelchair access'],
         paved: 6,
@@ -28,7 +30,8 @@ async function seedTrails() {
         created_at: '06/07/2023',
         updated_at: '06/07/2023',
       },
-      {
+      { 
+        _id: new ObjectId('647e11311ba1d11e7e07d229'),
         trail: "Brown's Creek State Trail",
         trailUses: ['Hiking', 'Biking', 'In-line skating', 'Horseback', 'Wheelchair access'],
         paved: 6,
@@ -56,9 +59,9 @@ async function seedTrails() {
     console.log('Trails seeded successfully!');
   } catch (error) {
     console.error('Error seeding trails:', error);
-  } finally {
-    connection.close(); // Close the database connection
-  }
+  } 
 }
 
 seedTrails();
+
+module.exports = seedTrails;

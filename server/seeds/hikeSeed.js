@@ -33,9 +33,9 @@ async function seedHikes() {
     console.log('Hikes seeded successfully!');
   } catch (error) {
     console.error('Error seeding hikes:', error);
-  } finally {
-    connection.close(); // Close the database connection
   }
 }
 
 seedHikes();
+
+module.exports = seedHikes;

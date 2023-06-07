@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  hikes: [{ type: Schema.Types.ObjectId, ref: 'Hike' }],
+  hikes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hike' }],
   hiking_goal: Number,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
