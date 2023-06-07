@@ -1,5 +1,6 @@
 const connection = require('../config/connection');
 const Hike = require('../models/Hike');
+const { ObjectId } = require('mongoose').Types;
 
 async function seedHikes() {
   try {
@@ -7,6 +8,7 @@ async function seedHikes() {
 
     const hikeData = [
       {
+        _id: new ObjectId('647e11311ba1d11e7e07e226'),
         user_id: '647e11311ba1d11e7e07d226', // User ID reference
         trail_id: '647e11311ba1d11e7e07d228', // Trail ID reference
         distance: 5,
@@ -17,6 +19,7 @@ async function seedHikes() {
         updated_at: '2023-06-07',
       },
       {
+        _id: new ObjectId('647e11311ba1d11e7e07e227'),
         user_id: '647e11311ba1d11e7e07d227', // User ID reference
         trail_id: '647e11311ba1d11e7e07d229', // Trail ID reference
         distance: 8,
