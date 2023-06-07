@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const trailSchema = new mongoose.Schema({
+  
   trail_name: String,
   trail_uses: [String],
   paved: Number,

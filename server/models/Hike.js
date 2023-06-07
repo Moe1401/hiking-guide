@@ -5,7 +5,12 @@ const hikeSchema = new mongoose.Schema({
   trail_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Trail' },
   distance: Number,
   goal_distance: Number,
-  comments: String,
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Comments',
+    },
+  ],
   hiked_at: { type: Date, default: Date.now },
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
