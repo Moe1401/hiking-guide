@@ -4,7 +4,7 @@ import './style.css';
 function Form() {
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const [signupName, setSignupName] = useState('');
+  const [signupUsername, setSignupUsername] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
 
@@ -22,10 +22,10 @@ function Form() {
     e.preventDefault();
     // Handle signup logic here
     console.log("Signup form submitted");
-    console.log("Name:", signupName);
+    console.log("Username:", signupUsername);
     console.log("Email:", signupEmail);
     console.log("Password:", signupPassword);
-    setSignupName('');
+    setSignupUsername('');
     setSignupEmail('');
     setSignupPassword('');
   };
@@ -56,11 +56,11 @@ function Form() {
       <h1>Signup</h1>
       <form className="form" onSubmit={handleSignupSubmit}>
         <input
-          value={signupName}
-          name="signupName"
-          onChange={(e) => setSignupName(e.target.value)}
-          type="text"
-          placeholder="Name"
+          value={signupUsername}
+          name="signupUsername"
+          onChange={(e) => setSignupUsername(e.target.value)}
+          type="text" // Change input type to "text"
+          placeholder="Username" // Change placeholder to "Username"
           required
         />
         <input
@@ -86,10 +86,6 @@ function Form() {
 }
 
 export default Form;
-
-
-
-
 
 
 
