@@ -62,6 +62,5 @@ async function seedTrails() {
   } 
 }
 
-seedTrails();
 
 module.exports = seedTrails;
