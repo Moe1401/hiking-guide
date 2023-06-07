@@ -1,17 +1,14 @@
 import React from 'react';
 
-// Here we are using object destructuring assignment to pluck off our variables from the props object
-// We assign them to their own variable names
 function NavTabs({ currentPage, handlePageChange }) {
   return (
-    <ul className="nav nav-tabs">
+    <ul className="nav nav-tabs" style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', padding: 0 }}>
       <li className="nav-item">
         <a
           href="#home"
           onClick={() => handlePageChange('Home')}
-          // This is a conditional (ternary) operator that checks to see if the current page is "Home"
-          // If it is, we set the current page to 'nav-link-active', otherwise we set it to 'nav-link'
           className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
+          style={{ marginRight: '10px', marginLeft: '10px', textDecoration: 'none', fontSize: '18px', fontWeight: 'bold' }}
         >
           Home
         </a>
@@ -21,6 +18,7 @@ function NavTabs({ currentPage, handlePageChange }) {
           href="#profile"
           onClick={() => handlePageChange('Profile')}
           className={currentPage === 'Profile' ? 'nav-link active' : 'nav-link'}
+          style={{ marginRight: '10px', textDecoration: 'none', fontSize: '18px', fontWeight: 'bold' }}
         >
           Profile
         </a>
@@ -30,19 +28,11 @@ function NavTabs({ currentPage, handlePageChange }) {
           href="#trails"
           onClick={() => handlePageChange('Trails')}
           className={currentPage === 'Trails' ? 'nav-link active' : 'nav-link'}
+          style={{ textDecoration: 'none', fontSize: '18px', fontWeight: 'bold' }}
         >
           Trails
         </a>
       </li>
-      <li className="nav-item">
-        {/* <a
-          href="#login"
-          onClick={() => handlePageChange('Login')}
-          className={currentPage === 'Login' ? 'nav-link active' : 'nav-link'}
-        >
-          Login
-        </a> */}
-      </li>      
     </ul>
   );
 }
