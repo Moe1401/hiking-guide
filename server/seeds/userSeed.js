@@ -13,7 +13,7 @@ async function seedUsers() {
         _id: new ObjectId('647e11311ba1d11e7e07d226'),
         username: 'johnDoe',
         password: 'password123',
-        hikes: [],
+        hikes: ['647e11311ba1d11e7e07e226'],
         hiking_goal: 100,
         created_at: '2023-06-07',
         updated_at: '2023-06-07',
@@ -22,7 +22,7 @@ async function seedUsers() {
         _id: new ObjectId('647e11311ba1d11e7e07d227'), // User ID reference
         username: 'janeSmith',
         password: 'secret456',
-        hikes: [],
+        hikes: ['647e11311ba1d11e7e07e227'],
         hiking_goal: 50,
         created_at: '2023-06-07',
         updated_at: '2023-06-07',
