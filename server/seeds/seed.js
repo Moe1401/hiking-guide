@@ -13,7 +13,7 @@ async function createSampleData() {
       {
         username: 'john123',
         password: 'password',
-        email: 'john@example.com',
+        hikes: 
         total_hikes: 10,
         total_distance: 50,
         hiking_goal: 100,
@@ -27,25 +27,6 @@ async function createSampleData() {
         total_distance: 25,
         hiking_goal: 50,
         avg_miles_per_day: 4
-      }
-    ]);
-
-    const [blazingStarTrail, shootingStarTrail] = await Trail.create([
-      {
-        trail_name: 'Blazing Star State Trail',
-        trail_uses: ['Hiking', 'Biking', 'In-line skating', 'Wheelchair access'],
-        paved: 6,
-        description: 'The Blazing Star State Trail is paved and runs from Albert Lea Lake in Albert Lea to Myre-Big Island State Park, a distance of approximately six miles.',
-        latitude: 43.64850,
-        longitude: -93.35425
-      },
-      {
-        trail_name: 'Shooting Star State Trail',
-        trail_uses: ['Hiking', 'Biking', 'Horseback riding', 'Snowmobiling'],
-        paved: 10,
-        description: 'The Shooting Star State Trail is a 10-mile long paved trail that winds through scenic southeastern Minnesota.',
-        latitude: 43.84568,
-        longitude: -92.65206
       }
     ]);
 
