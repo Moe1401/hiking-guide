@@ -1,32 +1,41 @@
-const User = require('../models/User');
+const mongoose = require('mongoose');
 
-const userData = [
-  {
-    username: 'johnDoe',
-    password: 'password123',
-    hikes: [],
-    hiking_goal: 100,
-    created_at: '2023-06-07',
-    updated_at: '2023-06-07',
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
   },
-  {
-    username: 'janeSmith',
-    password: 'secret456',
-    hikes: [],
-    hiking_goal: 50,
-    created_at: '2023-06-07',
-    updated_at: '2023-06-07',
+  password: {
+    type: String,
+    required: true,
+    unique: true,
   },
-];
+  hikes: [{ type: Schema.Types.ObjectId, ref: 'Hike' }],
+  hiking_goal: Number,
+  created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now }
+});
 
-const seedUsers = async () => {
-  try {
-    await User.deleteMany({}); // Clear existing users
-    await User.create(userData); // Create new users
-    console.log('Users seeded successfully!');
-  } catch (error) {
-    console.error('Error seeding users:', error);
-  }
-};
+userSchema.virtual('total_hikes').get(function(){
+  return this.hikes.length;
+});
 
-module.exports = seedUsers;
+userSchema.virtual('total_distance').get(function(){
+  return this.hikes.map(function(hike){hike.distance}).reduce(function(total,elem){return total+elem});
+});
+
+userSchema.virtual('account_age_in_days').get(function(){
+  return Math.ceil(( Date.now() - this.created_at )/ (1000 * 60 * 60 * 24));
+});
+
+// TODO: DRY this up
+userSchema.virtual('average_distance_per_day').get(function(){
+  const total_distance = this.hikes.map(function(hike){hike.distance}).reduce(function(total,elem){return total+elem});
+  const account_age_in_days = Math.ceil(( Date.now() - this.created_at )/ (1000 * 60 * 60 * 24));
+  return total_distance / account_age_in_days;
+})
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
