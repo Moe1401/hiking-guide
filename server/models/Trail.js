@@ -17,6 +17,9 @@ const trailSchema = new mongoose.Schema({
   winter: [String],
   latitude: Number,
   longitude: Number,
+  map_latitude: Number,
+  map_longitude: Number,
+  map_zoom: Number,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
