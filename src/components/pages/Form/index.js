@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './style.css';
 
 function Form() {
-  const [loginEmail, setLoginEmail] = useState('');
+  const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const [signupName, setSignupName] = useState('');
+  const [signupUsername, setSignupUsername] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
 
@@ -12,9 +12,9 @@ function Form() {
     e.preventDefault();
     // Handle login logic here
     console.log("Login form submitted");
-    console.log("Email:", loginEmail);
+    console.log("Username:", loginUsername);
     console.log("Password:", loginPassword);
-    setLoginEmail('');
+    setLoginUsername('');
     setLoginPassword('');
   };
 
@@ -22,10 +22,10 @@ function Form() {
     e.preventDefault();
     // Handle signup logic here
     console.log("Signup form submitted");
-    console.log("Name:", signupName);
+    console.log("Username:", signupUsername);
     console.log("Email:", signupEmail);
     console.log("Password:", signupPassword);
-    setSignupName('');
+    setSignupUsername('');
     setSignupEmail('');
     setSignupPassword('');
   };
@@ -35,11 +35,11 @@ function Form() {
       <h1>Login</h1>
       <form className="form" onSubmit={handleLoginSubmit}>
         <input
-          value={loginEmail}
-          name="loginEmail"
-          onChange={(e) => setLoginEmail(e.target.value)}
-          type="email"
-          placeholder="Email"
+          value={loginUsername}
+          name="loginUsername"
+          onChange={(e) => setLoginUsername(e.target.value)}
+          type="text" // Change input type to "text"
+          placeholder="Username" // Change placeholder to "Username"
           required
         />
         <input
@@ -56,11 +56,11 @@ function Form() {
       <h1>Signup</h1>
       <form className="form" onSubmit={handleSignupSubmit}>
         <input
-          value={signupName}
-          name="signupName"
-          onChange={(e) => setSignupName(e.target.value)}
-          type="text"
-          placeholder="Name"
+          value={signupUsername}
+          name="signupUsername"
+          onChange={(e) => setSignupUsername(e.target.value)}
+          type="text" // Change input type to "text"
+          placeholder="Username" // Change placeholder to "Username"
           required
         />
         <input
@@ -89,13 +89,7 @@ export default Form;
 
 
 
-
-
-
-
-
-
-
+//Gary boilerplate code
 
 // import React, { useState } from 'react';
 // import './style.css';

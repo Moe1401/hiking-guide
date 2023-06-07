@@ -1,16 +1,17 @@
 import React from 'react';
 import Form from './Form';
+import './Home.css';
 
 export default function Home() {
   return (
-    <div>
+    <div className="container">
       <h1>Home Page</h1>
-      <p>
-        welcome home!!
-      </p>
-      <Form>
-        
-      </Form>
+      <p>Welcome home!</p>
+      <Form></Form>
     </div>
   );
 }
+
+
+
+
