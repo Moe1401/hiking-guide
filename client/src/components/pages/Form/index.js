@@ -20,7 +20,7 @@ function Form() {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3001/api/user/login",
+    fetch("/api/user/login",
       { method: "POST", body: JSON.stringify({ username: signupUsername, password: signupPassword }) })
       .then(res => res.json())
       .then(data => console.log(data))
