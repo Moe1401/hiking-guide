@@ -11,7 +11,7 @@ export default function Home() {
       <Row>
         <Col sm={6}>
           <div className="form-container">
-            <Form />
+            
           </div>
         </Col>
       </Row>
