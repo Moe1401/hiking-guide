@@ -1,4 +1,4 @@
-const User = require('./models/User'); // Import the User model
+const User = require('../models/User'); // Import the User model
 
 // Create new user
 const createUser = async (req, res) => {
@@ -24,6 +24,15 @@ const getUserById = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+// Get all Users
+function getUsers(req, res) {
+  console.log("you are here");
+  User.find()
+    .then((user) => res.json(user))
+    .catch((err) => res.status(500).json(err));
+}
 
 // Update User ID
 const updateUserById = async (req, res) => {
@@ -60,4 +69,5 @@ module.exports = {
   getUserById,
   updateUserById,
   deleteUserById,
+  getUsers,
 };
