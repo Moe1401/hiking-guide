@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../App.css';
 import NavTabs from './NavTabs';
 import Home from './pages/Home';
-import Form from '../components/pages/Form/index';
 import Profile from './pages/Profile';
 import Trails from './pages/Trails';
 
@@ -20,9 +19,6 @@ export default function Container() {
     }
     if (currentPage === 'Trails') {
       return <Trails />;
-    }
-    if (currentPage === 'Login') {
-      return <Form />;
     }
     
   };

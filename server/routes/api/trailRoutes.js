@@ -4,7 +4,7 @@ const {
   getOneTrail,
 } = require('../../controllers/trailController');
 
-router.route('/all').get(getTrails); //working
-router.route('/1').get(getOneTrail);
+router.route('/').get(getTrails); //working
+router.route('/:id').get(getOneTrail);
 
 module.exports = router;
