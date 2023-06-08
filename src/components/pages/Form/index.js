@@ -20,6 +20,12 @@ function Form() {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
+    fetch("http://localhost:3001/api/user/login",
+      { method: "POST", body: JSON.stringify({ username: signupUsername, password: signupPassword }) })
+      .then(res => res.json())
+      .then(data => console.log(data))
+
+
     // Handle signup logic here
     console.log("Signup form submitted");
     console.log("Username:", signupUsername);
@@ -38,8 +44,8 @@ function Form() {
           value={loginUsername}
           name="loginUsername"
           onChange={(e) => setLoginUsername(e.target.value)}
-          type="text" // Change input type to "text"
-          placeholder="Username" // Change placeholder to "Username"
+          type="text"
+          placeholder="Username"
           required
         />
         <input
@@ -59,8 +65,8 @@ function Form() {
           value={signupUsername}
           name="signupUsername"
           onChange={(e) => setSignupUsername(e.target.value)}
-          type="text" // Change input type to "text"
-          placeholder="Username" // Change placeholder to "Username"
+          type="text"
+          placeholder="Username"
           required
         />
         <input
