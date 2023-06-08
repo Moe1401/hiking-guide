@@ -70,14 +70,6 @@ function Form() {
           required
         />
         <input
-          value={signupEmail}
-          name="signupEmail"
-          onChange={(e) => setSignupEmail(e.target.value)}
-          type="email"
-          placeholder="Email"
-          required
-        />
-        <input
           value={signupPassword}
           name="signupPassword"
           onChange={(e) => setSignupPassword(e.target.value)}
