@@ -1,64 +1,62 @@
-const User = require('../models/User.js');
+const User = require('./Models/user'); // Import the User model
+
+// Create new user
+const createUser = async (req, res) => {
+  try {
+    const newUser = await User.create(req.body);
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Get User by User ID
+const getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).populate('hikes');
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Update User ID
+const updateUserById = async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (updatedUser) {
+      res.json(updatedUser);
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Delete User ID
+const deleteUserById = async (req, res) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    if (deletedUser) {
+      res.json({ message: 'User deleted successfully' });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = {
-  // getUsers(req, res) {
-  //   User.find()
-  //     .then(async (users) => {
-  //       const userObj = {
-  //         users,
-  //       };
-  //       return res.json(userObj);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       return res.status(500).json(err);
-  //     });
-  // },
-  getSingleUser(req, res) {
-    User.findOne({ _id: req.params.userId })
-      .select('-__v')
-      .populate('hikes')
-      .populate('friends')
-      .then(async (user) =>
-        !user
-          ? res.status(404).json({ message: 'No user with that ID' })
-          : res.json({
-              user,
-            })
-      )
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
-  },
-  // createUser(req, res) {
-  //   User.create(req.body)
-  //     .then((user) => res.json(user))
-  //     .catch((err) => res.status(500).json(err));
-  // },
-  // updateUser(req, res) {
-  //   User.findOneAndUpdate(
-  //     { _id: req.params.userId },
-  //     { $set: req.body },
-  //     { runValidators: true, new: true }
-  //   )
-  //     .then((user) =>
-  //       !user
-  //         ? res.status(404).json({ message: 'No users found with those IDs :(' })
-  //         : res.json(user)
-  //     )
-  // },
-  // async deleteUser(req, res) {
-  //   try {
-  //     const user = await User.findOneAndRemove({ _id: req.params.userId })
-  //     if(!user) {
-  //       res.status(404).json({ message: 'No user with that ID' })
-  //     } else {
-  //       await Thought.deleteMany({ _id: { $in: user.thoughts} })
-  //       res.json({ message: 'User successfully deleted' })
-  //     }
-  //   } catch(err) {
-  //     res.status(500).json(err);
-  //   }
-  // },
+  createUser,
+  getUserById,
+  updateUserById,
+  deleteUserById,
 };
