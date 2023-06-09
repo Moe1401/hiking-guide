@@ -41,7 +41,20 @@ const loginUser = async (req, res) => {
 // Get User by User ID
 const getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate('hikes');
+    const user = await User.findById(req.params.id)
+      .populate('hikes')
+      // .aggregate([
+        // { "$unwind": "$hikes" },
+        // { "$group": {
+        //   "_id": "$hikes._id",
+        //   "total": { "$sum": "$hikes.distance" }
+        // }}
+      //   { "$addFields": {
+      //     "total_distance": {
+      //         "$sum": "$hikes.distance"
+      //     }
+      // } },
+      // ]);
     if (user) {
       res.json(user);
     } else {
