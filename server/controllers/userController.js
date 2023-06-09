@@ -20,7 +20,7 @@ const loginUser = async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.isCorrectPassword(req.body.password);
     if (!validPassword) {
       res
         .status(400)
@@ -34,7 +34,8 @@ const loginUser = async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error("could not login", err);
+    res.status(500).json(err);
   }
 }
 
