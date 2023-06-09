@@ -1,21 +1,2 @@
 /* Home.css */
-.container {
-  background-color: #2fbd39;
-  padding: 20px;
-  /* other styles... */
-}
-
-.form-container {
-  border: 1px solid #000;
-  padding: 10px;
-  margin-right: auto; 
-}
-
-.form-container + * {
-  display: none; 
-}
-
-.form-container .form {
-  margin-bottom: 20px;
-}
 

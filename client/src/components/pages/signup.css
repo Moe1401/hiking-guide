@@ -1,0 +1,39 @@
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.signupForm form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.signupForm form input {
+    margin: 5px auto;
+}
+
+.card {
+    color: white;
+    width: 25%;
+    background: rgb(113, 122, 99);
+    border-radius: 10px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    box-shadow: 7px 7px 21px -15px rgba(0,0,0,0.75);
+}
+
+.submit {
+    padding: 5px;
+    background:rgb(124, 146, 105);
+    border: 1px solid white;
+    color: white;
+    border-radius: 4px;
+    margin: 20px 0 0 0;
+    font-size: 15px;
+};
+
+.submit:hover {
+    cursor: pointer;
+}

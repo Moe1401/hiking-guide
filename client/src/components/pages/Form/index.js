@@ -10,6 +10,29 @@ function Form() {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    fetch('/api/user/login', {
+      method: 'POST',
+      body: JSON.stringify({ username: loginUsername, password: loginPassword }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Assuming the API returns a success flag or token upon successful login
+        if (data.success) {
+          console.log('Login successful');
+          console.log('Token:', data.token);
+          
+    
+        } else {
+          console.log('Login failed');
+          console.log('Error:', data.error);
+          // Handle login error, display an error message
+        }
+      })
+      .catch((error) => {
+        console.log('An error occurred during login:', error);
+        // display an error message
+      });
+    
     // Handle login logic here
     console.log("Login form submitted");
     console.log("Username:", loginUsername);
@@ -20,7 +43,8 @@ function Form() {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    fetch("/api/user/login",
+    fetch("/api/user/signup",
+    // fetch("/api/user/login",
       { method: "POST", body: JSON.stringify({ username: signupUsername, password: signupPassword }) })
       .then(res => res.json())
       .then(data => console.log(data))
