@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -35,7 +36,18 @@ userSchema.virtual('average_distance_per_day').get(function () {
   const account_age_in_days = Math.ceil((Date.now() - this.created_at) / (1000 * 60 * 60 * 24));
   return total_distance / account_age_in_days;
 })
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
 
+  next();
+});
+
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -17,10 +17,10 @@ export default function Container() {
       return <Home />;
     }
     if (currentPage === 'Signup') {
-      return <Signup />;
+      return <Signup setCurrentPage={setCurrentPage}/>;
     }
     if (currentPage === 'Login') {
-      return <Login />;
+      return <Login setCurrentPage={setCurrentPage}/>;
     }
     if (currentPage === 'Profile') {
       return <Profile />;

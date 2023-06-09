@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import "./signup.css"
 
-function Signup() {
+function Signup({setCurrentPage}) {
   const [signupUsername, setSignupUsername] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    fetch("/api/user/login", {
+    alert(signupUsername+signupPassword)
+    fetch("/api/user/signup", {
       method: "POST",
       body: JSON.stringify({
         username: signupUsername,
         password: signupPassword,
       }),
+      headers: { 'Content-Type': 'application/json' }
     })
-      .then((res) => res.json())
+      .then((res) => setCurrentPage("Profile"))
       .then((data) => console.log(data));
     setSignupUsername("");
     setSignupPassword("");
