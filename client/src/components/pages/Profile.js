@@ -9,17 +9,29 @@ export default function Profile() {
   const [goalDistance, setGoalDistance] = useState(null);
   const [trails, setTrails] = useState([]);
   const [trail, setTrail] = useState(null);
+  const [ totalDistance, setTotalDistance ] = useState(0);
+  const [ aveDistanceDay, setAveDistanceDay ] = useState(0);
+  const [ aveDistanceHike, setAveDistanceHike ] = useState(0);
 
   const total_distance = (hikes) => {
-    return hikes.map((hike) => hike.distance ).reduce(function (total, elem) { return total + elem });
+    if(hikes.length){
+      return hikes.map((hike) => hike.distance ).reduce(function (total, elem) { return total + elem });
+    }
+    return 0;
   }
 
   const average_distance_per_day = (hikes, account_age_in_days) => {
-    return total_distance(hikes) / account_age_in_days;
+    if (hikes.length && account_age_in_days){
+      return total_distance(hikes) / account_age_in_days;
+    }
+    return 0;
   }
 
   const average_distance_per_hike = (hikes) => {
-    return total_distance(hikes) / hikes.length;
+    if (hikes.length){
+      return total_distance(hikes) / hikes.length;
+    }
+    return 0;
   }
 
   const fetchUserData = async () => {
@@ -27,12 +39,15 @@ export default function Profile() {
     fetch(`/api/user/${profile_id}`)
       .then((res) => res.json())
       .then((data) => {
-        data.total_distance = total_distance(hikes);
-        data.average_distance_per_day = average_distance_per_day(hikes, data.account_age_in_days);
-        data.average_distance_per_hike = average_distance_per_hike(hikes);
         setUserData(data);
         console.log(data);
     });
+  }
+
+  const processData = () => {
+    setTotalDistance(total_distance(hikes));
+    setAveDistanceDay(average_distance_per_day(hikes, userData.account_age_in_days));
+    setAveDistanceHike(average_distance_per_hike(hikes));
   }
 
   const addHike = async () => {
@@ -52,6 +67,7 @@ export default function Profile() {
       setDistance("");
       setGoalDistance("");
       setHikedAt("");
+      processData();
     } catch (error) {
       console.error(error);
     }
@@ -61,6 +77,7 @@ export default function Profile() {
     fetchHikes();
     fetchTrails();
     fetchUserData();
+    processData();
   }, []);
 
   const fetchHikes = async () => {
@@ -92,10 +109,10 @@ export default function Profile() {
         welcome to your profile!
       </p>
       <p>{userData.username}</p>
-      <p>Number of Hikes: {userData.total_hikes}</p>
-      <p>Total Distance: {userData.total_distance}</p>
-      <p>Average Distance Per Hike: {userData.average_distance_per_hike}</p>
-      <p>Average Distance Per Day: {userData.average_distance_per_day}</p>
+      <p>Number of Hikes: {hikes.length}</p>
+      <p>Total Distance: {totalDistance}</p>
+      <p>Average Distance Per Hike: {aveDistanceHike}</p>
+      <p>Average Distance Per Day: {aveDistanceDay}</p>
       <div>
         <ul>
           {hikes && hikes.map(hike => <ProfileHike key={hike._id} hike={hike} getTrailName={getTrailName} />)}
