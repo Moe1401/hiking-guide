@@ -1,6 +1,6 @@
 # Trail-Blazers 
 
-License Badge MIT (add bagde) 
+- <a href="https://img.shields.io/badge/License-MIT-brightgreen"><img src="https://img.shields.io/badge/License-MIT-brightgreen"></a>
 
 ## Table of Contents
 - [Description](#Description)
