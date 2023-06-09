@@ -44,11 +44,17 @@ export default function Profile(props) {
     });
   }
 
-  const processData = () => {
-    setTotalDistance(total_distance(hikes));
-    setAveDistanceDay(average_distance_per_day(hikes, userData.account_age_in_days));
-    setAveDistanceHike(average_distance_per_hike(hikes));
-  }
+
+  // const unused = () => {
+  //   console.log("!!!!!!!!")
+  //   console.log(hikes)
+  //   console.log(hikes.length)
+  //   console.log(userData.account_age_in_days)
+  //   console.log("!!!!!!!!")
+  //   setTotalDistance(total_distance(hikes));
+  //   setAveDistanceDay(average_distance_per_day(hikes, userData.account_age_in_days));
+  //   setAveDistanceHike(average_distance_per_hike(hikes));
+  // }
 
   const addHike = async () => {
     try {
@@ -62,7 +68,9 @@ export default function Profile(props) {
         }),
         headers: { 'Content-Type': 'application/json' }
       })
-      fetchHikes();
+      // console.log(`hikes: ${JSON.stringify(hikes)}`);
+      // fetchHikes();
+      // console.log(`post fetch hikes: ${JSON.stringify(hikes)}`);
       setTrail("");
       setDistance("");
       setGoalDistance("");
@@ -73,18 +81,60 @@ export default function Profile(props) {
     }
   }
 
+  const processData = () => {
+    const allData = Promise.all([fetchHikeData, fetchTrailData, fetchUserData2]).then( values => {
+      const hikeData = values[0]
+      const trailData = values[1]
+      const userData2 = values[2]
+      console.log(hikeData)
+      console.log(trailData)
+      console.log(userData2)
+      setHikes(hikeData);
+      setTrails(trailData)
+      setUserData(userData2);
+      setTotalDistance(total_distance(hikeData));
+      setAveDistanceDay(average_distance_per_day(hikeData, userData2.account_age_in_days));
+      setAveDistanceHike(average_distance_per_hike(hikeData));
+      }) 
+  }
+
+  const fetchUserData2 = new Promise( async (resolve, reject) => {
+    const profile_id = props.userId;
+    const response = await fetch(`/api/user/${profile_id}`)
+    resolve(response.json())
+  })
+
+  const fetchHikeData = new Promise( async (resolve, reject) => {
+    const response = await fetch('/api/hike');
+    resolve(response.json())
+  })
+
+  const fetchTrailData = new Promise( async (resolve, reject) => {
+    const response = await fetch('/api/trail');
+    resolve(response.json())
+  })
+  
+
   useEffect(() => {
-    fetchHikes();
-    fetchTrails();
-    fetchUserData();
+    // fetchHikes();
+    // fetchTrails();
+    // fetchUserData();
     processData();
+    return () => {};
   }, []);
+
+
+  
+
+
+  
 
   const fetchHikes = async () => {
     try {
       const response = await fetch('/api/hike');
       const data = await response.json();
-      setHikes(data);
+      await setHikes(data);
+      processData();
     } catch (error) {
       console.error(error);
     }
