@@ -4,7 +4,7 @@ const Trail = require('../models/Trail');
 function getTrails(req, res) {
   console.log("you are here");
   Trail.find()
-    .then((trails) => res.json(trails))
+    .then((trail) => res.json(trail))
     .catch((err) => res.status(500).json(err));
 }
 
