@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./login.css"
 
-function Login({setCurrentPage}) {
+function Login({setCurrentPage, setUserId}) {
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
@@ -15,8 +15,11 @@ function Login({setCurrentPage}) {
       }),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then((res) => setCurrentPage("Profile"))
-      .then((data) => console.log(data));
+      .then((res) => res.json())
+      .then((data) => {
+        setUserId(data.user.id)
+        setCurrentPage("Profile")
+      });
     setLoginUsername('');
     setLoginPassword('');
   };

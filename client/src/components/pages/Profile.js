@@ -1,13 +1,54 @@
 import React, { useState, useEffect } from 'react';
+import ProfileHike from './Profile/ProfileHike';
 
-
-export default function Profile() {
+export default function Profile(props) {
+  const [ userData, setUserData ] = useState("");
   const [hikes, setHikes] = useState([]);
   const [hikedAt, setHikedAt] = useState(null);
   const [distance, setDistance] = useState(null);
   const [goalDistance, setGoalDistance] = useState(null);
   const [trails, setTrails] = useState([]);
   const [trail, setTrail] = useState(null);
+  const [ totalDistance, setTotalDistance ] = useState(0);
+  const [ aveDistanceDay, setAveDistanceDay ] = useState(0);
+  const [ aveDistanceHike, setAveDistanceHike ] = useState(0);
+
+  const total_distance = (hikes) => {
+    if(hikes.length){
+      return hikes.map((hike) => hike.distance ).reduce(function (total, elem) { return total + elem });
+    }
+    return 0;
+  }
+
+  const average_distance_per_day = (hikes, account_age_in_days) => {
+    if (hikes.length && account_age_in_days){
+      return total_distance(hikes) / account_age_in_days;
+    }
+    return 0;
+  }
+
+  const average_distance_per_hike = (hikes) => {
+    if (hikes.length){
+      return total_distance(hikes) / hikes.length;
+    }
+    return 0;
+  }
+
+  const fetchUserData = async () => {
+    const profile_id = props.userId;
+    fetch(`/api/user/${profile_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUserData(data);
+        console.log(data);
+    });
+  }
+
+  const processData = () => {
+    setTotalDistance(total_distance(hikes));
+    setAveDistanceDay(average_distance_per_day(hikes, userData.account_age_in_days));
+    setAveDistanceHike(average_distance_per_hike(hikes));
+  }
 
   const addHike = async () => {
     try {
@@ -26,6 +67,7 @@ export default function Profile() {
       setDistance("");
       setGoalDistance("");
       setHikedAt("");
+      processData();
     } catch (error) {
       console.error(error);
     }
@@ -34,6 +76,8 @@ export default function Profile() {
   useEffect(() => {
     fetchHikes();
     fetchTrails();
+    fetchUserData();
+    processData();
   }, []);
 
   const fetchHikes = async () => {
@@ -64,13 +108,14 @@ export default function Profile() {
       <p>
         welcome to your profile!
       </p>
+      <p>{userData.username}</p>
+      <p>Number of Hikes: {hikes.length}</p>
+      <p>Total Distance: {totalDistance}</p>
+      <p>Average Distance Per Hike: {aveDistanceHike}</p>
+      <p>Average Distance Per Day: {aveDistanceDay}</p>
       <div>
         <ul>
-          {hikes.map(hike => (
-            <li key={hike._id}>
-              You hiked <strong>{getTrailName(hike.trail_id)}</strong> on {hike.hiked_at} for {hike.distance} out of {hike.goal_distance}.
-            </li>
-          ))}
+          {hikes && hikes.map(hike => <ProfileHike key={hike._id} hike={hike} getTrailName={getTrailName} />)}
         </ul>
       </div>
       <div>
