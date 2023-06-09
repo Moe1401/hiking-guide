@@ -14,6 +14,12 @@
     margin: 5px auto;
 }
 
+
+body { 
+    background-image: url("https://northshoreexplorermn.com/wp-content/uploads/2020/01/05-30-2021-Split-Rock-State-Park-8-2-REV-MD-2-2048x1365.jpg");
+    text: white
+}
+
 .card {
     color: white;
     width: 25%;
@@ -21,21 +27,24 @@
     border-radius: 10px;
     margin: 0 auto;
     padding-bottom: 50px;
-    box-shadow: 7px 7px 21px -15px rgba(0,0,0,0.75);
+    box-shadow: 7px 7px 21px -15px rgba(0, 0, 0, 0.75);
+    opacity: 0.5;
 }
+
 
 .submit {
     padding: 5px;
-    background:rgb(124, 146, 105);
+    background: rgb(124, 146, 105);
     border: 1px solid white;
     color: white;
     border-radius: 4px;
     margin: 20px 0 0 0;
     font-size: 15px;
-};
+}
+
+;
 
 .submit:hover {
     cursor: pointer;
 }
-
 
