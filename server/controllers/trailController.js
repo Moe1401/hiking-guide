@@ -10,7 +10,7 @@ function getTrails(req, res) {
 
 const getOneTrail = async (req, res) => {
   try {
-    const selectedTrail = await Trail.find({ trail: 'Blazing Star State Trail' });
+    const selectedTrail = await Trail.findById(req.params.id);
     res.json(selectedTrail);
   } catch (error) {
     console.log("Error fetching trails:", error);
