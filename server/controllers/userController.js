@@ -43,15 +43,7 @@ const loginUser = async (req, res) => {
 // Get User by User ID
 const getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id)
-      // .populate({
-      //   path: 'hikes',
-      //   populate: {
-      //     path: 'trail',
-      //     model: 'Trail'
-      //   }
-      // })
-      .populate('hikes')
+    const user = await User.findById(req.params.id).populate('hikes');
     if (user) {
       res.json(user);
     } else {
