@@ -13,18 +13,19 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ username: req.body.username });
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect user, please try again' });
       return;
     }
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.isCorrectPassword(req.body.password);
+    console.log(req.body.password);
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect password, please try again' });
       return;
     }
     req.session.save(() => {
@@ -34,7 +35,8 @@ const loginUser = async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error("could not login", err);
+    res.status(500).json(err);
   }
 }
 

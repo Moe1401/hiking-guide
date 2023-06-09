@@ -1,5 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
+const Accordion = ({title, children}) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <div onClick={setOpen.bind(this, !open)}>
+        {title}
+      </div>
+      {open && (
+      <div>
+        {children}
+      </div>)
+      }
+    </div>
+  );
+
+}
+
 const Dropdown = () => {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -53,6 +70,21 @@ const Dropdown = () => {
           <h2>Selected Item:</h2>
           <p>{selectedItem.trail}</p>
           <p>{selectedItem.description}</p>
+          <Accordion title="Landscape">{selectedItem.landscape}</Accordion>
+          <Accordion title="Permits">
+          <ul>{selectedItem.permits.map((item, i) => (
+          <li key={i}>
+            {item}
+          </li>
+        ))}</ul>
+          </Accordion>
+          <Accordion title="Parking">
+          <ul>{selectedItem.parking.map((item, i) => (
+          <li key={i}>
+            {item}
+          </li>
+        ))}</ul>
+          </Accordion>
         </div>
       )}
     </div>
