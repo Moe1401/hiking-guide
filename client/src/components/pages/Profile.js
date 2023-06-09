@@ -12,6 +12,10 @@ export default function Profile() {
     return total_distance(hikes) / account_age_in_days;
   }
 
+  const average_distance_per_hike = (hikes, total_hikes) => {
+    return total_distance(hikes) / total_hikes;
+  }
+
   useEffect(()=> {
     const profile_id = "647e11311ba1d11e7e07d227";
     fetch(`/api/user/${profile_id}`)
@@ -19,6 +23,7 @@ export default function Profile() {
       .then((data) => {
         data.total_distance = total_distance(data.hikes);
         data.average_distance_per_day = average_distance_per_day(data.hikes, data.account_age_in_days);
+        data.average_distance_per_hike = average_distance_per_hike(data.hikes, data.total_hikes);
         setUserData(data);
         console.log(data);
       });
@@ -34,6 +39,7 @@ export default function Profile() {
       <p>{userData.username}</p>
       <p>Number of Hikes: {userData.total_hikes}</p>
       <p>Total Distance: {userData.total_distance}</p>
+      <p>Average Distance Per Hike: {userData.average_distance_per_hike}</p>
       <p>Average Distance Per Day: {userData.average_distance_per_day}</p>
       <p>
         {userData.hikes && userData.hikes.map((hike) => <ProfileHike key={hike._id} hike={hike} />)}
