@@ -1,5 +1,5 @@
 const connection = require('../config/connection');
-const Comments = require('../models/Comments');
+const Comment = require('../models/Comment');
 
 async function seedComments() {
   try {
@@ -24,8 +24,8 @@ async function seedComments() {
       },
     ];
 
-    await Comments.deleteMany({}); // Clear existing comments
-    await Comments.create(commentData); // Create new comments
+    await Comment.deleteMany({}); // Clear existing comments
+    await Comment.create(commentData); // Create new comments
     console.log('Comments seeded successfully!');
   } catch (error) {
     console.error('Error seeding comments:', error);
