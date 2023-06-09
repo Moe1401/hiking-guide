@@ -50,18 +50,6 @@ const getUserById = async (req, res) => {
       //   }
       // })
       .populate('hikes')
-      // .aggregate([
-        // { "$unwind": "$hikes" },
-        // { "$group": {
-        //   "_id": "$hikes._id",
-        //   "total": { "$sum": "$hikes.distance" }
-        // }}
-      //   { "$addFields": {
-      //     "total_distance": {
-      //         "$sum": "$hikes.distance"
-      //     }
-      // } },
-      // ]);
     if (user) {
       res.json(user);
     } else {
