@@ -1,8 +1,16 @@
 const Trail = require('../models/Trail');
 
-const getTrails = async (req, res) => {
+// Get all Trails
+function getTrails(req, res) {
+  console.log("you are here");
+  Trail.find()
+    .then((trail) => res.json(trail))
+    .catch((err) => res.status(500).json(err));
+}
+
+const getOneTrail = async (req, res) => {
   try {
-    const selectedTrail = await Trail.findOne({ trail_name: 'Blazing Star State Trail' });
+    const selectedTrail = await Trail.find({ trail: 'Blazing Star State Trail' });
     res.json(selectedTrail);
   } catch (error) {
     console.log("Error fetching trails:", error);
@@ -10,4 +18,4 @@ const getTrails = async (req, res) => {
   }
 };
 
-module.exports = { getTrails };
+module.exports = { getTrails, getOneTrail };

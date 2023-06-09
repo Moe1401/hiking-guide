@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import '../App.css';
 import NavTabs from './NavTabs';
 import Home from './pages/Home';
-import Form from '../components/pages/Form/index';
 import Profile from './pages/Profile';
 import Trails from './pages/Trails';
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 
 export default function Container() {
@@ -15,14 +16,17 @@ export default function Container() {
     if (currentPage === 'Home') {
       return <Home />;
     }
+    if (currentPage === 'Signup') {
+      return <Signup />;
+    }
+    if (currentPage === 'Login') {
+      return <Login />;
+    }
     if (currentPage === 'Profile') {
       return <Profile />;
     }
     if (currentPage === 'Trails') {
       return <Trails />;
-    }
-    if (currentPage === 'Login') {
-      return <Form />;
     }
     
   };

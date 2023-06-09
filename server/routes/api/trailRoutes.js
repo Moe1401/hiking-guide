@@ -1,7 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const trailController = require('../../controllers/trailController');
+const router = require('express').Router();
+const {
+  getTrails,
+  getOneTrail,
+} = require('../../controllers/trailController');
 
-router.get('/trails' , trailController.getTrails);
-console.log(router);
+router.route('/').get(getTrails); //working
+router.route('/:id').get(getOneTrail);
+
 module.exports = router;
