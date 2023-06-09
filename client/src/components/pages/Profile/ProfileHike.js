@@ -2,17 +2,17 @@ import {gMap, sentinelMap} from "../../../utils/maps"
 
 function ProfileHike(props) {
   return(
-    <div style={{border: "1px solid red"}}>
-      <p>Trail: {props.hike.trail_id}</p>
-      <p>Goal: {props.hike.goal_distance}</p>
-      <p>Distance Hiked: {props.hike.distance}</p>
-      <p>
-        <a href={gMap({})} target="_blank" rel="noreferrer noopener">Google Maps</a>
-      </p>
-      <p>
-        <a href={sentinelMap({})} target="_blank" rel="noreferrer noopener">Sentinel Maps</a>
-      </p>
-    </div>
+    <li>
+      You hiked <strong>{props.getTrailName(props.hike.trail_id)}</strong> on {props.hike.hiked_at} for {props.hike.distance} out of {props.hike.goal_distance}.
+      <ul>
+        <li>
+          <a href={gMap({})} target="_blank" rel="noreferrer noopener">Google Maps</a>
+        </li>
+        <li>
+          <a href={sentinelMap({})} target="_blank" rel="noreferrer noopener">Sentinel Maps</a>
+        </li>
+      </ul>
+    </li>
   )
 }
 

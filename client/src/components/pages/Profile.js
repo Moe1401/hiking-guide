@@ -1,13 +1,39 @@
 import React, { useState, useEffect } from 'react';
-
+import ProfileHike from './Profile/ProfileHike';
 
 export default function Profile() {
+  const [ userData, setUserData ] = useState("");
   const [hikes, setHikes] = useState([]);
   const [hikedAt, setHikedAt] = useState(null);
   const [distance, setDistance] = useState(null);
   const [goalDistance, setGoalDistance] = useState(null);
   const [trails, setTrails] = useState([]);
   const [trail, setTrail] = useState(null);
+
+  const total_distance = (hikes) => {
+    return hikes.map((hike) => hike.distance ).reduce(function (total, elem) { return total + elem });
+  }
+
+  const average_distance_per_day = (hikes, account_age_in_days) => {
+    return total_distance(hikes) / account_age_in_days;
+  }
+
+  const average_distance_per_hike = (hikes) => {
+    return total_distance(hikes) / hikes.length;
+  }
+
+  const fetchUserData = async () => {
+    const profile_id = "647e11311ba1d11e7e07d227";
+    fetch(`/api/user/${profile_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.total_distance = total_distance(hikes);
+        data.average_distance_per_day = average_distance_per_day(hikes, data.account_age_in_days);
+        data.average_distance_per_hike = average_distance_per_hike(hikes);
+        setUserData(data);
+        console.log(data);
+    });
+  }
 
   const addHike = async () => {
     try {
@@ -34,6 +60,7 @@ export default function Profile() {
   useEffect(() => {
     fetchHikes();
     fetchTrails();
+    fetchUserData();
   }, []);
 
   const fetchHikes = async () => {
@@ -64,13 +91,14 @@ export default function Profile() {
       <p>
         welcome to your profile!
       </p>
+      <p>{userData.username}</p>
+      <p>Number of Hikes: {userData.total_hikes}</p>
+      <p>Total Distance: {userData.total_distance}</p>
+      <p>Average Distance Per Hike: {userData.average_distance_per_hike}</p>
+      <p>Average Distance Per Day: {userData.average_distance_per_day}</p>
       <div>
         <ul>
-          {hikes.map(hike => (
-            <li key={hike._id}>
-              You hiked <strong>{getTrailName(hike.trail_id)}</strong> on {hike.hiked_at} for {hike.distance} out of {hike.goal_distance}.
-            </li>
-          ))}
+          {hikes && hikes.map(hike => <ProfileHike key={hike._id} hike={hike} getTrailName={getTrailName} />)}
         </ul>
       </div>
       <div>
