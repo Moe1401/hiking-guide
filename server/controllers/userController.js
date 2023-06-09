@@ -42,6 +42,13 @@ const loginUser = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
+      // .populate({
+      //   path: 'hikes',
+      //   populate: {
+      //     path: 'trail',
+      //     model: 'Trail'
+      //   }
+      // })
       .populate('hikes')
       // .aggregate([
         // { "$unwind": "$hikes" },

@@ -24,7 +24,7 @@ export default function Profile() {
       <p>{userData.username}</p>
       <p>Number of Hikes: {userData.total_hikes}</p>
       <p>
-        {userData.hikes.map((hike) => <ProfileHike key={hike._id} hike={hike} />)}
+        {userData.hikes && userData.hikes.map((hike) => <ProfileHike key={hike._id} hike={hike} />)}
       </p>
     </div>
   );
