@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 
 export default function Container() {
   const [currentPage, setCurrentPage] = useState('Home');
+  const [ userId, setUserId ] = useState(null);
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
   const renderPage = () => {
@@ -20,10 +21,10 @@ export default function Container() {
       return <Signup setCurrentPage={setCurrentPage}/>;
     }
     if (currentPage === 'Login') {
-      return <Login setCurrentPage={setCurrentPage}/>;
+      return <Login setCurrentPage={setCurrentPage} setUserId={setUserId}/>;
     }
     if (currentPage === 'Profile') {
-      return <Profile />;
+      return <Profile userId={userId}/>;
     }
     if (currentPage === 'Trails') {
       return <Trails />;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProfileHike from './Profile/ProfileHike';
 
-export default function Profile() {
+export default function Profile(props) {
   const [ userData, setUserData ] = useState("");
   const [hikes, setHikes] = useState([]);
   const [hikedAt, setHikedAt] = useState(null);
@@ -35,7 +35,7 @@ export default function Profile() {
   }
 
   const fetchUserData = async () => {
-    const profile_id = "647e11311ba1d11e7e07d227";
+    const profile_id = props.userId;
     fetch(`/api/user/${profile_id}`)
       .then((res) => res.json())
       .then((data) => {
