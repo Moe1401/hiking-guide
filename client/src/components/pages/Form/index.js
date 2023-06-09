@@ -21,7 +21,7 @@ function Form() {
           console.log('Login successful');
           console.log('Token:', data.token);
           
-          // history.push('/dashboard');
+    
         } else {
           console.log('Login failed');
           console.log('Error:', data.error);
