@@ -13,16 +13,16 @@
 
 ## Description
 
-Hiking trails app/site was created with the avergae user in mind. ...... 
-
+Hiking trails app/site was created with the outdoors lovers in mind. Looking for the best hiking trails in MN? Whether you're getting ready to hike, bike, trail run, or explore other outdoor activities. Enjoy hand-curated trail maps. 
 
 
 ## Installation
 
-To install the dependencies required for the application, run the following line in the terminal.
+To install the dependencies required for the application, run in the terminal.
 
-npm install
-Runs the app in the development mode.
+- npm install
+- Install React App
+- Runs the app in the development mode.
 
 
 ## Technologies
@@ -32,6 +32,7 @@ Runs the app in the development mode.
 - HTML
 - CSS
 - Javascript
+- Bootstrap 
 
 
 ## Usage
@@ -41,22 +42,24 @@ Clone the repository to your local computer.
 Install all require dependencies using "npm i" or "npm install" in the integrated terminal on the root of the repository.
 npm commands 
 node server.js 
-
 Access the deployed site at http://localhost:(HOST) (default 3001).
 To access the deployed site, visit the link hosted by Heroku: https://dashboard.heroku.com/apps/trail-blaze
 
 ## Testing
+To test the application, run given terms in JSON packages
+React APP
 
-To test the application, run the following line in the terminal.
 
 
 Screen Shots: 
 
 Home Page:
 
-Login Page:
+Login Page:<img width="1514" alt="login page" src="https://github.com/Moe1401/hiking-guide/assets/128229173/247bc631-df5a-4104-b1ff-266ac941abce">
 
-Signup: 
+
+Signup: <img width="1511" alt="SignupPage" src="https://github.com/Moe1401/hiking-guide/assets/128229173/ca854d44-5f8b-49b4-88ee-10d1d8feea3c">
+
 
 Profile Page:
 
@@ -71,6 +74,6 @@ Jason Treimert
 
 Hana Ahmed
 
-Amy K
+Amy Kilgette
 
 Ian Bui
