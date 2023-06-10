@@ -2,7 +2,6 @@ const Hike = require('../models/Hike');
 
 // Get all Hikes
 function getHikes(req, res) {
-  console.log("you are here");
   Hike.find({user_id: req.session.user_id})
     .then((Hike) => res.json(Hike))
     .catch((err) => res.status(500).json(err));
