@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Container from './components/Container';
-import Home from './components/pages/Home';
 import "./App.css";
+import Container from './components/Container';
 
 const App = () => {
   return (
     <Router>
+      {/* <Container /> */}
       <Routes>
-        <Route path="/*" element={<Container />} />
+        <Route path='/*' element= {<Container/>} />
       </Routes>
     </Router>
   );

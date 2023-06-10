@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import Form from './Form';
 import './Home.css';
 
 export default function Home() {

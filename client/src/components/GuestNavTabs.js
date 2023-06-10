@@ -1,7 +1,7 @@
 import React from "react";
 import "./navbar.css";
 
-function NavTabs({ currentPage, handlePageChange, setUserId }) {
+function NavTabs({ currentPage, handlePageChange }) {
   return (
     <section className="header">
       <h1><b>Hiking Trails</b></h1>
@@ -33,10 +33,10 @@ function NavTabs({ currentPage, handlePageChange, setUserId }) {
         </li>
         <li className="nav-item">
           <a
-            href="#logout"
-            onClick={() => {setUserId(null); handlePageChange("Home")}}
+            href="#signup"
+            onClick={() => handlePageChange("Signup")}
             className={
-              currentPage === "Logout" ? "nav-link active" : "nav-link"
+              currentPage === "Signup" ? "nav-link active" : "nav-link"
             }
             style={{
               marginRight: "10px",
@@ -46,26 +46,25 @@ function NavTabs({ currentPage, handlePageChange, setUserId }) {
               fontWeight: "bold",
             }}
           >
-            Logout
+            Signup
           </a>
-        </li>        
+        </li>
         <li className="nav-item">
           <a
-            href="#profile"
-            onClick={() => handlePageChange("Profile")}
-            className={
-              currentPage === "Profile" ? "nav-link active" : "nav-link"
-            }
+            href="#login"
+            onClick={() => handlePageChange("Login")}
+            className={currentPage === "Login" ? "nav-link active" : "nav-link"}
             style={{
               marginRight: "10px",
+              marginLeft: "10px",
               textDecoration: "none",
               fontSize: "18px",
               fontWeight: "bold",
             }}
           >
-            Profile
+            Login
           </a>
-        </li>
+        </li>        
         <li className="nav-item">
           <a
             href="#trails"
