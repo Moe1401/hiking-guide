@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProfileHike from './Profile/ProfileHike';
 
 export default function Profile(props) {
-  const [ userData, setUserData ] = useState("");
+  const [ userInfo, setUserInfo ] = useState("");
   const [hikes, setHikes] = useState([]);
   const [hikedAt, setHikedAt] = useState(null);
   const [distance, setDistance] = useState(null);
@@ -35,7 +35,6 @@ export default function Profile(props) {
   }
 
   const addHike = (e) => {
-    e.preventDefault();
     const addHikeCall = new Promise( async (resolve, reject) => {
       if (trail && Number(distance) && Number(goalDistance) && hikedAt){
         const response = await fetch('/api/hike', {
@@ -59,14 +58,7 @@ export default function Profile(props) {
       setGoalDistance("");
       setHikedAt("");
       processData();
-      return delay(1000).then(function() {
-        return processData();
-      });
     }) 
-  }
-
-  const delay = (t, val) => {
-    return new Promise(resolve => setTimeout(resolve, t, val));
   }
 
   const processData = () => {
@@ -89,12 +81,12 @@ export default function Profile(props) {
     const allData = Promise.all([fetchHikeData, fetchTrailData, fetchUserData]).then( values => {
       const hikeData = values[0]
       const trailData = values[1]
-      const userData2 = values[2]
+      const userData = values[2]
       setHikes(hikeData);
       setTrails(trailData)
-      setUserData(userData2);
+      setUserInfo(userData);
       setTotalDistance(total_distance(hikeData));
-      setAveDistanceDay(average_distance_per_day(hikeData, userData2.account_age_in_days));
+      setAveDistanceDay(average_distance_per_day(hikeData, userData.account_age_in_days));
       setAveDistanceHike(average_distance_per_hike(hikeData));
     }) 
   }
@@ -102,7 +94,6 @@ export default function Profile(props) {
 
   useEffect(() => {
     processData();
-    return () => {};
   }, []);
 
   const getTrailName = id => trails.find(trail => trail._id === id)?.trail
@@ -113,7 +104,7 @@ export default function Profile(props) {
       <p>
         welcome to your profile!
       </p>
-      <p>{userData.username}</p>
+      <p>{userInfo.username}</p>
       <p>Number of Hikes: {hikes.length}</p>
       <p>Total Distance: {totalDistance}</p>
       <p>Average Distance Per Hike: {aveDistanceHike}</p>
