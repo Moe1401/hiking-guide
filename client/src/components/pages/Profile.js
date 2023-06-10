@@ -34,15 +34,15 @@ export default function Profile(props) {
     return 0;
   }
 
-  const fetchUserData = async () => {
-    const profile_id = props.userId;
-    fetch(`/api/user/${profile_id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUserData(data);
-        console.log(data);
-    });
-  }
+  // const fetchUserData = async () => {
+  //   const profile_id = props.userId;
+  //   fetch(`/api/user/${profile_id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUserData(data);
+  //       console.log(data);
+  //   });
+  // }
 
 
   // const unused = () => {
@@ -56,64 +56,104 @@ export default function Profile(props) {
   //   setAveDistanceHike(average_distance_per_hike(hikes));
   // }
 
-  const addHike = async () => {
-    try {
-      await fetch('/api/hike', {
-        method: 'POST',
-        body: JSON.stringify({
-          trail_id: trail,
-          hiked_at: hikedAt,
-          distance: Number(distance),
-          goal_distance: Number(goalDistance)
-        }),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      // console.log(`hikes: ${JSON.stringify(hikes)}`);
-      // fetchHikes();
-      // console.log(`post fetch hikes: ${JSON.stringify(hikes)}`);
+  // const addHike = async () => {
+  //   try {
+  //     await fetch('/api/hike', {
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //         trail_id: trail,
+  //         hiked_at: hikedAt,
+  //         distance: Number(distance),
+  //         goal_distance: Number(goalDistance)
+  //       }),
+  //       headers: { 'Content-Type': 'application/json' }
+  //     })
+  //     // console.log(`hikes: ${JSON.stringify(hikes)}`);
+  //     // fetchHikes();
+  //     // console.log(`post fetch hikes: ${JSON.stringify(hikes)}`);
+  //     setTrail("");
+  //     setDistance("");
+  //     setGoalDistance("");
+  //     setHikedAt("");
+  //     processData();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+  const addHike = (e) => {
+    e.preventDefault();
+    console.log("addHike")
+    const addHikeCall = new Promise( async (resolve, reject) => {
+      if (trail && Number(distance) && Number(goalDistance) && hikedAt){
+        const response = await fetch('/api/hike', {
+          method: 'POST',
+          body: JSON.stringify({
+            trail_id: trail,
+            hiked_at: hikedAt,
+            distance: Number(distance),
+            goal_distance: Number(goalDistance)
+          }),
+          headers: { 'Content-Type': 'application/json' }
+        })
+        console.log("@@@@@@@@@@@@@@@@")
+        console.log(response)
+        resolve(response.body)
+      } else {
+        console.log("All fields are required for a hike!")
+      }
+    })  
+    Promise.all([addHikeCall]).then( values => {
       setTrail("");
       setDistance("");
       setGoalDistance("");
       setHikedAt("");
+      console.log("!!!!!!!!!!!!!!!!!");
+      console.log(values);
       processData();
-    } catch (error) {
-      console.error(error);
-    }
+      return delay(1000).then(function() {
+        return processData();
+      });
+    }) 
+  }
+
+  const delay = (t, val) => {
+    return new Promise(resolve => setTimeout(resolve, t, val));
   }
 
   const processData = () => {
+    const fetchUserData2 = new Promise( async (resolve, reject) => {
+      const profile_id = props.userId;
+      const response = await fetch(`/api/user/${profile_id}`)
+      resolve(response.json())
+    })
+  
+    const fetchHikeData = new Promise( async (resolve, reject) => {
+      const response = await fetch('/api/hike');
+      resolve(response.json())
+    })
+  
+    const fetchTrailData = new Promise( async (resolve, reject) => {
+      const response = await fetch('/api/trail');
+      resolve(response.json())
+    })
+    
     const allData = Promise.all([fetchHikeData, fetchTrailData, fetchUserData2]).then( values => {
       const hikeData = values[0]
       const trailData = values[1]
       const userData2 = values[2]
       console.log(hikeData)
-      console.log(trailData)
-      console.log(userData2)
+      // console.log(trailData)
+      // console.log(userData2)
       setHikes(hikeData);
       setTrails(trailData)
       setUserData(userData2);
       setTotalDistance(total_distance(hikeData));
       setAveDistanceDay(average_distance_per_day(hikeData, userData2.account_age_in_days));
       setAveDistanceHike(average_distance_per_hike(hikeData));
-      }) 
+    }) 
   }
 
-  const fetchUserData2 = new Promise( async (resolve, reject) => {
-    const profile_id = props.userId;
-    const response = await fetch(`/api/user/${profile_id}`)
-    resolve(response.json())
-  })
-
-  const fetchHikeData = new Promise( async (resolve, reject) => {
-    const response = await fetch('/api/hike');
-    resolve(response.json())
-  })
-
-  const fetchTrailData = new Promise( async (resolve, reject) => {
-    const response = await fetch('/api/trail');
-    resolve(response.json())
-  })
-  
 
   useEffect(() => {
     // fetchHikes();
@@ -129,26 +169,26 @@ export default function Profile(props) {
 
   
 
-  const fetchHikes = async () => {
-    try {
-      const response = await fetch('/api/hike');
-      const data = await response.json();
-      await setHikes(data);
-      processData();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const fetchHikes = async () => {
+  //   try {
+  //     const response = await fetch('/api/hike');
+  //     const data = await response.json();
+  //     await setHikes(data);
+  //     processData();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  const fetchTrails = async () => {
-    try {
-      const response = await fetch('/api/trail');
-      const data = await response.json();
-      setTrails(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const fetchTrails = async () => {
+  //   try {
+  //     const response = await fetch('/api/trail');
+  //     const data = await response.json();
+  //     setTrails(data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const getTrailName = id => trails.find(trail => trail._id === id)?.trail
 
@@ -192,9 +232,12 @@ export default function Profile(props) {
           Goal Distance
         </label>
         <input type="number" value={goalDistance} onChange={e => setGoalDistance(e.target.value)} />
-        <button type="button" onClick={addHike}>
+        <button type="button" onClick={e => addHike(e)}>
           Add Hike
         </button>
+        {/* <button type="button" onClick={e => processData(e)}>
+          Refresh
+        </button> */}
       </div>
     </div>
   );
