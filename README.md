@@ -13,7 +13,7 @@
 
 ## Description
 
-Hiking trails app/site was created with the outdoors lovers in mind. Looking for the best hiking trails in MN? Whether you're getting ready to hike, bike, trail run, or explore other outdoor activities. Enjoy hand-curated trail maps. 
+Hiking trails app/site was created with the outdoors lovers in mind. Looking for the best hiking trails in MN? Whether you're getting ready to hike, bike, trail run, or explore other outdoor activities within each trail. Enjoy hand-curated trail maps. 
 
 
 ## Installation
