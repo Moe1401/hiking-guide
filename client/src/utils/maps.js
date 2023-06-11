@@ -90,9 +90,3 @@ export const openStreetMapEmbed = (settings = {}) => {
     src="https://www.openstreetmap.org/export/embed.html?bbox=${lon1}%2C${lat1}%2C${lon2}%2C${lat2}&layer=mapnik">
   </iframe>`
 }
-
-export const openStreetMapEmbedUrl = (settings = {}) => {
-  const {lat1,lat2,lon1,lon2} = bbox(settings)
-  console.log(settings)
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${lon1}%2C${lat1}%2C${lon2}%2C${lat2}&layer=mapnik`
-}
