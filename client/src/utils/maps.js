@@ -4,18 +4,6 @@ const DEFAULT_ZOOM = 9;
 const DEFAULT_EMBED_WIDTH = 300;
 const DEFAULT_EMBED_HEIGHT = 300;
 
-const DEFAULT_SETTINGS = {
-  lat: DEFAULT_LAT,
-  lon: DEFAULT_LON,
-  zoom: DEFAULT_ZOOM,
-}
-
-const DEFAULT_BBOX_SETTINGS = {
-  ...DEFAULT_SETTINGS,
-  width: DEFAULT_EMBED_WIDTH,
-  height: DEFAULT_EMBED_HEIGHT,
-}
-
 const lat = (settings = {}) => {
   return settings.lat || DEFAULT_LAT;
 }
@@ -67,7 +55,6 @@ export const sentinelMap = (settings = {}) => {
 }
 
 export const gMapEmbed = (settings = {}) => {
-  console.log(settings)
   return `<iframe id="gMap"
     title="GMap"
     width="${embedWidth(settings)}"
@@ -82,7 +69,6 @@ export const gMapEmbed = (settings = {}) => {
 
 export const openStreetMapEmbed = (settings = {}) => {
   const {lat1,lat2,lon1,lon2} = bbox(settings)
-  console.log(settings)
   return `<iframe id="openStreetMap"
     title="OpenStreetMap"
     width="${embedWidth(settings)}"
