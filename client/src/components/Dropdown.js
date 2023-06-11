@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import JsxParser from 'react-jsx-parser'
+import {gMap, openStreetMap, sentinelMap, gMapEmbed, openStreetMapEmbed} from "../utils/maps"
 
 const Accordion = ({title, children}) => {
   const [open, setOpen] = useState(false);
@@ -54,6 +56,28 @@ const Dropdown = () => {
     }
   };
 
+  const map_settings = {
+    lat: selectedItem?.map_latitude,
+    lon: selectedItem?.map_longitude,
+    zoom: selectedItem?.map_zoom,
+  }
+
+  const GMapComponent = () => (
+    <JsxParser
+      bindings={{}}
+      components={{}}
+      jsx={gMapEmbed(map_settings)}
+    />
+  )
+
+  const OSMapComponent = () => (
+    <JsxParser
+      bindings={{}}
+      components={{}}
+      jsx={openStreetMapEmbed(map_settings)}
+    />
+  )
+
   return (
     <div>
       <select onChange={handleSelectChange}>
@@ -70,6 +94,29 @@ const Dropdown = () => {
           <h2>Selected Item:</h2>
           <p>{selectedItem.trail}</p>
           <p>{selectedItem.description}</p>
+          <GMapComponent />
+          <OSMapComponent />
+          <a
+            href={gMap(map_settings)}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Google Maps
+          </a>
+          <a
+            href={openStreetMap(map_settings)}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            OpenStreetMap
+          </a>
+          <a
+            href={sentinelMap(map_settings)}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            View Trail Conditions
+          </a>
           <Accordion title="Landscape">{selectedItem.landscape}</Accordion>
           <Accordion title="Permits">
           <ul>{selectedItem.permits.map((item, i) => (
