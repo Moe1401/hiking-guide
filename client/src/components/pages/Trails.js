@@ -4,7 +4,7 @@ import Dropdown from '../Dropdown';
 export default function Trails() {
   return (
     <div>
-      <h1>Trails Page</h1>
+      <h1>Select a Minnesota Hiking Trail</h1>
         <Dropdown />
     </div>
   );
