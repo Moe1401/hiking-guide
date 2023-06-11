@@ -62,11 +62,17 @@ const Dropdown = () => {
     zoom: selectedItem?.map_zoom,
   }
 
+  const map_embed_settings = {
+    lat: selectedItem?.map_latitude,
+    lon: selectedItem?.map_longitude,
+    zoom: selectedItem?.map_zoom_embed || selectedItem?.map_zoom,
+  }
+
   const GMapComponent = () => (
     <JsxParser
       bindings={{}}
       components={{}}
-      jsx={gMapEmbed(map_settings)}
+      jsx={gMapEmbed(map_embed_settings)}
     />
   )
 
@@ -74,7 +80,7 @@ const Dropdown = () => {
     <JsxParser
       bindings={{}}
       components={{}}
-      jsx={openStreetMapEmbed(map_settings)}
+      jsx={openStreetMapEmbed(map_embed_settings)}
     />
   )
 

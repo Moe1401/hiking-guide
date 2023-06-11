@@ -10,11 +10,17 @@ function ProfileHike(props) {
     zoom: props.trailData?.map_zoom,
   }
 
+  const map_embed_settings = {
+    lat: props.trailData?.map_latitude,
+    lon: props.trailData?.map_longitude,
+    zoom: props.trailData?.map_zoom_embed || props.trailData?.map_zoom,
+  }
+
   const GMapComponent = () => (
     <JsxParser
       bindings={{}}
       components={{}}
-      jsx={gMapEmbed(map_settings)}
+      jsx={gMapEmbed(map_embed_settings)}
     />
   )
 
@@ -22,7 +28,7 @@ function ProfileHike(props) {
     <JsxParser
       bindings={{}}
       components={{}}
-      jsx={openStreetMapEmbed(map_settings)}
+      jsx={openStreetMapEmbed(map_embed_settings)}
     />
   )
 
