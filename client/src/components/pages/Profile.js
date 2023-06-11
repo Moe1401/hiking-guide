@@ -96,7 +96,7 @@ export default function Profile(props) {
     processData();
   }, []);
 
-  const getTrailName = id => trails.find(trail => trail._id === id)?.trail
+  const getTrailData = id => trails.find(trail => trail._id === id)
 
   return (
     <div>
@@ -111,7 +111,7 @@ export default function Profile(props) {
       <p>Average Distance Per Day: {aveDistanceDay}</p>
       <div>
         <ul>
-          {hikes && hikes.map(hike => <ProfileHike key={hike._id} hike={hike} getTrailName={getTrailName} />)}
+          {hikes && hikes.map(hike => <ProfileHike key={hike._id} hike={hike} trailData={getTrailData(hike.trail_id)} />)}
         </ul>
       </div>
       <div>
