@@ -1,4 +1,4 @@
-import {gMap, sentinelMap} from "../../../utils/maps"
+import {gMap, openStreetMap, sentinelMap} from "../../../utils/maps"
 
 function ProfileHike(props) {
   return(
@@ -9,7 +9,10 @@ function ProfileHike(props) {
           <a href={gMap({})} target="_blank" rel="noreferrer noopener">Google Maps</a>
         </li>
         <li>
-          <a href={sentinelMap({})} target="_blank" rel="noreferrer noopener">Sentinel Maps</a>
+          <a href={openStreetMap({})} target="_blank" rel="noreferrer noopener">OpenStreetMap</a>
+        </li>
+        <li>
+          <a href={sentinelMap({})} target="_blank" rel="noreferrer noopener">SentinelHub Play</a>
         </li>
       </ul>
     </li>
