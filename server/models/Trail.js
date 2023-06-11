@@ -20,6 +20,7 @@ const trailSchema = new mongoose.Schema({
   map_latitude: Number,
   map_longitude: Number,
   map_zoom: Number,
+  map_zoom_embed: Number,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
