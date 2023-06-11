@@ -59,10 +59,7 @@ export const gMapEmbed = (settings = {}) => {
     title="GMap"
     width="${embedWidth(settings)}"
     height="${embedHeight(settings)}"
-    frameborder="0"
     scrolling="no"
-    marginheight="0"
-    marginwidth="0"
     src="https://maps.google.com/maps?width=200&height=200&hl=en&q=${lat(settings)},${lon(settings)}+(Trail%20Head)&t=&z=${zoom(settings)}&ie=UTF8&iwloc=B&output=embed">
   </iframe>`;
 }
