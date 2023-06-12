@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import JsxParser from 'react-jsx-parser'
-import {gMap, openStreetMap, sentinelMap, gMapEmbed, openStreetMapEmbed} from "../utils/maps"
+import { gMap, openStreetMap, sentinelMap, gMapEmbed, openStreetMapEmbed } from "../utils/maps"
 
-const Accordion = ({title, children}) => {
+const Accordion = ({ title, children }) => {
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -10,9 +10,9 @@ const Accordion = ({title, children}) => {
         {title}
       </div>
       {open && (
-      <div>
-        {children}
-      </div>)
+        <div>
+          {children}
+        </div>)
       }
     </div>
   );
@@ -40,7 +40,7 @@ const Dropdown = () => {
   const handleSelectChange = (event) => {
     const selectedItemId = event.target.value;
     setSelectedItem(null); // Reset the selected item
-    
+
     if (selectedItemId) {
       fetchSelectedItem(selectedItemId);
     }
@@ -96,48 +96,52 @@ const Dropdown = () => {
       </select>
 
       {selectedItem && (
-        <div>
-          <h2>Selected Item:</h2>
-          <p>{selectedItem.trail}</p>
-          <p>{selectedItem.description}</p>
-          <GMapComponent />
-          <OSMapComponent />
-          <a
-            href={gMap(map_settings)}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Google Maps
-          </a>
-          <a
-            href={openStreetMap(map_settings)}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            OpenStreetMap
-          </a>
-          <a
-            href={sentinelMap(map_settings)}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            View Trail Conditions
-          </a>
-          <Accordion title="Landscape">{selectedItem.landscape}</Accordion>
-          <Accordion title="Permits">
-          <ul>{selectedItem.permits.map((item, i) => (
-          <li key={i}>
-            {item}
-          </li>
-        ))}</ul>
-          </Accordion>
-          <Accordion title="Parking">
-          <ul>{selectedItem.parking.map((item, i) => (
-          <li key={i}>
-            {item}
-          </li>
-        ))}</ul>
-          </Accordion>
+        <div className="container" style={{ marginLeft: "2rem" }}>
+          <div style={{ backgroundColor: "white", opacity: "85%" }}>
+            <div style={{padding: "10px"}}>
+              <h2>Selected Item:</h2>
+              <p>{selectedItem.trail}</p>
+              <p>{selectedItem.description}</p>
+              <GMapComponent />
+              <OSMapComponent />
+              <a
+                href={gMap(map_settings)}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Google Maps
+              </a>
+              <a
+                href={openStreetMap(map_settings)}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                OpenStreetMap
+              </a>
+              <a
+                href={sentinelMap(map_settings)}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                View Trail Conditions
+              </a>
+              <Accordion title="Landscape">{selectedItem.landscape}</Accordion>
+              <Accordion title="Permits">
+                <ul>{selectedItem.permits.map((item, i) => (
+                  <li key={i}>
+                    {item}
+                  </li>
+                ))}</ul>
+              </Accordion>
+              <Accordion title="Parking">
+                <ul>{selectedItem.parking.map((item, i) => (
+                  <li key={i}>
+                    {item}
+                  </li>
+                ))}</ul>
+              </Accordion>
+            </div>
+          </div>
         </div>
       )}
     </div>
