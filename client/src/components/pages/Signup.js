@@ -7,7 +7,6 @@ function Signup({setCurrentPage}) {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    alert(signupUsername+signupPassword)
     fetch("/api/user/signup", {
       method: "POST",
       body: JSON.stringify({
@@ -41,7 +40,7 @@ function Signup({setCurrentPage}) {
           onChange={(e) => setSignupPassword(e.target.value)}
           type="password"
           placeholder="Password"
-          required
+          required style={{display:"block"}}
         />
         <button class="submit" type="submit">Signup</button>
       </form>
