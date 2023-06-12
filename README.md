@@ -45,10 +45,10 @@ To test the application, execute the following command:
 `npm test`
 
 
+-Screen Shots: 
 
-Screen Shots: 
+Home Page:<img width="1598" alt="HomePage" src="https://github.com/Moe1401/hiking-guide/assets/128229173/b45ed520-ce5d-41bb-b688-b792c9496950">
 
-Home Page:
 
 Login Page:<img width="1514" alt="login page" src="https://github.com/Moe1401/hiking-guide/assets/128229173/247bc631-df5a-4104-b1ff-266ac941abce">
 
@@ -56,9 +56,8 @@ Login Page:<img width="1514" alt="login page" src="https://github.com/Moe1401/hi
 Signup: <img width="1511" alt="SignupPage" src="https://github.com/Moe1401/hiking-guide/assets/128229173/ca854d44-5f8b-49b4-88ee-10d1d8feea3c">
 
 
-Profile Page:
 
-Trails:
+Trails: <img width="1598" alt="Trails Page " src="https://github.com/Moe1401/hiking-guide/assets/128229173/610986cf-abfd-4b20-82f9-51e89819a1e9">
 
 
 ## Contributors
