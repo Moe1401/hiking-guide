@@ -12,18 +12,13 @@
 - [Contact](#Contact)
 
 ## Description
-
-Hiking trails app/site was created with the outdoors lovers in mind. Looking for the best hiking trails in MN? Whether you're getting ready to hike, bike, trail run, or explore other outdoor activities within each trail. Enjoy hand-curated trail maps. 
+The Trail Blazer Hiking app was created with outdoor lovers in mind. Are you looking for the best hiking trails in MN? Whether you're preparing to hike, bike, trail run, or explore other outdoor activities, this app has you covered. Sign up for an account and keep track of your personal hiking stats, including dates, distances, and goal distances.
 
 
 ## Installation
 
-To install the dependencies required for the application, run in the terminal.
-
-- npm install
-- Install React App
-- Runs the app in the development mode.
-
+To install the required dependencies for the application, run the following command in the terminal:
+`npm install`
 
 ## Technologies
 
@@ -32,22 +27,22 @@ To install the dependencies required for the application, run in the terminal.
 - HTML
 - CSS
 - Javascript
-- Bootstrap 
+- Bootstrap for React
+- MongoDB 
 
 
 ## Usage
 
-To run locally:
+To run the application locally, follow these steps:
+
 Clone the repository to your local computer.
-Install all require dependencies using "npm i" or "npm install" in the integrated terminal on the root of the repository.
-npm commands 
-node server.js 
-Access the deployed site at http://localhost:(HOST) (default 3001).
-To access the deployed site, visit the link hosted by Heroku: https://dashboard.heroku.com/apps/trail-blaze
+Install all required dependencies by running the following command in the integrated terminal at the root of the repository:
+`npm install` 
+To access the deployed site online, visit the link hosted by Heroku: https://dashboard.heroku.com/apps/trail-blaze
 
 ## Testing
-To test the application, run given terms in JSON packages
-React APP
+To test the application, execute the following command:
+`npm test`
 
 
 
@@ -68,12 +63,14 @@ Trails:
 
 ## Contributors
 
-Mylan Mouritsen
+Mylan Mouritsen [https://github.com/Moe1401](https://github.com/Moe1401)<br>
 
-Jason Treimert
+Jason Treimert [https://github.com/studiotect](https://github.com/studiotect)<br>
 
-Hana Ahmed
+Hana Ahmed [https://github.com/Ahha0801](https://github.com/Ahha0801)<br>
 
-Amy Kilgette
+Amy Kilgour [https://github.com/kilgette](https://github.com/kilgette)<br>
 
-Ian Bui
+Ian Bui [https://github.com/thinkbui](https://github.com/thinkbui)
+
+
