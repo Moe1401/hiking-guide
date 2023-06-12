@@ -44,8 +44,7 @@ To access the deployed site online, visit the link hosted by Heroku: https://tra
 To test the application, execute the following command:
 `npm test`
 
-
--Screen Shots: 
+- Screen Shots: 
 
 Home Page:<img width="1598" alt="HomePage" src="https://github.com/Moe1401/hiking-guide/assets/128229173/b45ed520-ce5d-41bb-b688-b792c9496950">
 
