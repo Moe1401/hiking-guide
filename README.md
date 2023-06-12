@@ -38,7 +38,7 @@ To run the application locally, follow these steps:
 Clone the repository to your local computer.
 Install all required dependencies by running the following command in the integrated terminal at the root of the repository:
 `npm install` 
-To access the deployed site online, visit the link hosted by Heroku: https://dashboard.heroku.com/apps/trail-blaze
+To access the deployed site online, visit the link hosted by Heroku: https://trail-blazerz.herokuapp.com/.
 
 ## Testing
 To test the application, execute the following command:
