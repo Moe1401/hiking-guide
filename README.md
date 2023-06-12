@@ -68,12 +68,14 @@ Trails:
 
 ## Contributors
 
-Mylan Mouritsen
+Mylan Mouritsen [https://github.com/Moe1401](https://github.com/Moe1401)<br>
 
-Jason Treimert
+Jason Treimert [https://github.com/studiotect](https://github.com/studiotect)<br>
 
-Hana Ahmed
+Hana Ahmed [https://github.com/Ahha0801](https://github.com/Ahha0801)<br>
 
-Amy Kilgette
+Amy Kilgour [https://github.com/kilgette](https://github.com/kilgette)<br>
 
-Ian Bui
+Ian Bui [https://github.com/thinkbui](https://github.com/thinkbui)
+
+
