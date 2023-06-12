@@ -102,29 +102,40 @@ const Dropdown = () => {
               <h2>Selected Item:</h2>
               <p>{selectedItem.trail}</p>
               <p>{selectedItem.description}</p>
-              <GMapComponent />
-              <OSMapComponent />
-              <a
-                href={gMap(map_settings)}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Google Maps
-              </a>
-              <a
-                href={openStreetMap(map_settings)}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                OpenStreetMap
-              </a>
-              <a
-                href={sentinelMap(map_settings)}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                View Trail Conditions
-              </a>
+              <p>
+                Maps
+                <ul>
+                  <li>
+                    <a
+                      href={gMap(map_settings)}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      Google Maps
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={openStreetMap(map_settings)}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      OpenStreetMap
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={sentinelMap(map_settings)}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      SentinelHub Playground
+                    </a>
+                  </li>
+                  <li><GMapComponent /></li>
+                  <li><OSMapComponent /></li>
+                </ul>
+              </p>
               <Accordion title="Landscape">{selectedItem.landscape}</Accordion>
               <Accordion title="Permits">
                 <ul>{selectedItem.permits.map((item, i) => (
