@@ -99,11 +99,13 @@ export default function Profile(props) {
   const getTrailData = id => trails.find(trail => trail._id === id)
 
   return (
-    <div>
+    <div className="container" style={{ marginLeft: "2rem" }}>
+       <div style={{ backgroundColor: "white", opacity: "85%" }}>
+        
       <h1>Profile Page</h1>
-      <p>
+      <h3>
         welcome to your profile!
-      </p>
+      </h3>
       <p>{userInfo.username}</p>
       <p>Number of Hikes: {hikes.length}</p>
       <p>Total Distance: {totalDistance}</p>
@@ -142,6 +144,7 @@ export default function Profile(props) {
           Add Hike
         </button>
       </div>
+          </div>
     </div>
   );
 }

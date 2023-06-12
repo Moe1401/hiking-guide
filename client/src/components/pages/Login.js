@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./login.css"
 
-function Login({setCurrentPage, setUserId}) {
+function Login({ setCurrentPage, setUserId }) {
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
@@ -26,27 +26,29 @@ function Login({setCurrentPage, setUserId}) {
 
   return (
     <div className='loginForm'>
+
         <div className="card">
-      <h1>Login</h1>
-      <form className="form" onSubmit={handleLoginSubmit}>
-        <input
-          value={loginUsername}
-          name="loginUsername"
-          onChange={(e) => setLoginUsername(e.target.value)}
-          type="text"
-          placeholder="Username"
-          required
-        />
-        <input
-          value={loginPassword}
-          name="loginPassword"
-          onChange={(e) => setLoginPassword(e.target.value)}
-          type="password"
-          placeholder="Password"
-          required
-        />
-        <button className="submit" type="submit">Login</button>
-      </form>
+          <h1>Login</h1>
+      
+          <form className="form" onSubmit={handleLoginSubmit}>
+            <input
+              value={loginUsername}
+              name="loginUsername"
+              onChange={(e) => setLoginUsername(e.target.value)}
+              type="text"
+              placeholder="Username"
+              required
+            />
+            <input
+              value={loginPassword}
+              name="loginPassword"
+              onChange={(e) => setLoginPassword(e.target.value)}
+              type="password"
+              placeholder="Password"
+              required style={{display:"block"}}
+            />
+            <button className="submit" type="submit">Login</button>
+          </form>
       </div>
     </div>
   );
