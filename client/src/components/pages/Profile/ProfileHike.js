@@ -43,7 +43,7 @@ function ProfileHike(props) {
           <a href={openStreetMap(map_settings)} target="_blank" rel="noreferrer noopener">OpenStreetMap</a>
         </li>
         <li>
-          <a href={sentinelMap(map_settings)} target="_blank" rel="noreferrer noopener">SentinelHub Play</a>
+          <a href={sentinelMap(map_settings)} target="_blank" rel="noreferrer noopener">SentinelHub Playground</a>
         </li>
         <li>
           <GMapComponent />
